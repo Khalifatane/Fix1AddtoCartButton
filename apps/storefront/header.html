@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!-- HTML5 Declaration - tells browser this is HTML5 -->
+<!-- saved from url=(0038)https://preline.co/pro/shop/index.html -->
+<!-- This is a  Boutique template - formatted version -->
+<!-- Data attributes: theme system for styling, language setting for accessibility -->
+<html class="relative iidaq light" data-brand="avocado" data-font="sans" data-theme="theme-olive" lang="en">
+ <head>
+  <!-- HEAD SECTION: Contains metadata, stylesheets, and scripts loaded before page render -->
+  <!-- Character encoding meta tag ensures text displays correctly -->
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <!-- Custom CSS container - can be modified dynamically -->
+  <style id="stndz-custom-css">
+  </style>
+  <!-- Required Meta Tags Always Come First for browser compatibility -->
+  <!-- Title - appears in browser tab and search resultats -->
+  <title>
+   <!-- TITLE: Appears in browser tab and search engine resultats -->
+   Boutique
+  </title>
+  <!-- Favicon -->
+  <!-- FAVICON: Small icon shown in browser tab, links to external icon file -->
+  <link href="https://preline.co/favicon.ico" rel="shortcut icon"/>
+  <!-- Font -->
+  <!-- GOOGLE FONTS: Import fonts for typography (css2 contains font definitions) -->
+  <link href="/css/css2.css" rel="stylesheet"/>
+  <!-- CSS HS -->
+  <!-- MAIN STYLESHEET: Contains all the styling for the Preline theme (Tailwind CSS + custom styles) -->
+  <link href="/css/obfuscated.min.css" rel="stylesheet"/>
+  <!-- Theme Check and Update -->
+  <!-- THEME SCRIPT: Loads theme color configuration from external file -->  <!-- This is part sur HSPreline component library that manages themes dynamically -->
+  <script src="/js/hs-unavailable-color-themes.js">
+  </script>
+  <!-- JAVASCRIPT SECTION: Theme and Brand Management -->
+  <!-- This script runs on page load to:
+       1. Apply user's theme preference from localStorage (browser memory)
+       2. Generate CSS variables for brand colors
+       3. Set light/dark mode based on user preference ou system setting
+   -->
+  <script>
+   function generateVariables(theme = "dashboard", brand = "blue") {
+      // FUNCTION: Creates dynamic CSS color variables based on theme and brand
+      // theme: name sur the color theme (e.g., "olive", "ocean")
+      // brand: brand color name (e.g., "avocado", "cyan")
+      const styleId = "#hs-brand-variables";
+      let style = null;
+
+      if (!document.querySelector(styleId)) {
+        const head = document.querySelector("head");
+        style = document.createElement("style");
+        style.id = "hs-brand-variables";
+
+        head.append(style);
+      } else {
+        style = document.querySelector(styleId);
+      }
+
+      style.textContent = `
+        :root[data-theme="theme-${theme}"],
+        [data-theme="theme-${theme}"] {
+          --primary-50:       var(--color-${brand}-50);
+          --primary-100:      var(--color-${brand}-100);
+          --primary-200:      var(--color-${brand}-200);
+          --primary-300:      var(--color-${brand}-300);
+          --primary-400:      var(--color-${brand}-400);
+          --primary-500:      var(--color-${brand}-500);
+          --primary-600:      var(--color-${brand}-600);
+          --primary-700:      var(--color-${brand}-700);
+          --primary-800:      var(--color-${brand}-800);
+          --primary-900:      var(--color-${brand}-900);
+          --primary-950:      var(--color-${brand}-950);
+        }
+      `;
+    }
+
+    (function () {
+      const unavailableColorThemes = window.HS_UNAVAILABLE_COLOR_THEMES;
+      const pathname = window.location.pathname;
+      let reducedThemes = [];
+      let defaultTheme = "default";
+      let defaultBrand = "blue";
+      let defaultFont = "sans";
+
+      const themesDefaults = {
+        "default": "blue",
+        "harvest": "amber",
+        "retro": "fuchsia",
+        "ocean": "cyan",
+        "autumn": "yellow",
+        "moon": "gray",
+        "bubblegum": "pink",
+        "cashmere": "mauve",
+        "olive": "avocado",
+      };
+
+      for (const [key_i, value_i] of Object.entries(unavailableColorThemes)
