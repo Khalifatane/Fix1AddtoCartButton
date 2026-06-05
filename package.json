@@ -22,8 +22,8 @@
     "playwright": "",
     "turbo": "^2.0.0"
   },
-  "packageManager": "pnpm@9.0.0",
+  "packageManager": "pnpm@10.12.4",
   "engines": {
-    "node": ">=20.0.0"
+    "node": "20.x"
   }
 }
